@@ -14,7 +14,7 @@
   {
     "type": "invoice",
     "title": "Invoice",
-    "thumbnail": "https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif",
+    "thumbnail": "https://media.giphy.com/media/uTCAwWNtz7U2c/giphy.gif",
     "position": 2
   },
   {
@@ -26,7 +26,7 @@
   {
     "type": "bill-of-lading-2",
     "title": "Bill of Lading 2",
-    "thumbnail": "https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif",
+    "thumbnail": "https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif",
     "position": 4
   }
 ]

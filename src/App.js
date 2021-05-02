@@ -26,7 +26,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch('https://github.com/vudaysai')
+    fetch('https://github.com')
       .then((res) => res.json())
       .then(
         (result) => {
@@ -58,6 +58,10 @@ function App() {
     const items = Array.from(cats);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
+    items.forEach((item, index) => {
+      // eslint-disable-next-line no-param-reassign
+      item.position = index;
+    });
 
     setCats(items);
   }

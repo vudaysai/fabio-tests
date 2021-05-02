@@ -1,7 +1,7 @@
 import { setupWorker, rest } from 'msw';
 
 const worker = setupWorker(...[
-  rest.get('https://github.com/vudaysai', (req, res, ctx) => res(
+  rest.get('https://github.com', (req, res, ctx) => res(
     ctx.delay(1000),
     ctx.status(200, 'Mocked status'),
     ctx.json({
