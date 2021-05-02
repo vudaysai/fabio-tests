@@ -1,0 +1,20 @@
+{
+  "cSpell.words": [
+    "browserslist",
+    "craco",
+    "tailwindcss"
+  ],
+  "editor.tabSize": 2,
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    }
+  },
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+  "files.insertFinalNewline": true
+}
