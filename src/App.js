@@ -13,7 +13,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const lastSavedAt = localStorage.getItem('saveTime');
 
+  /* Mock implementation of save API */
   const compareAndSaveData = () => {
+    /* Will save only if data is modified */
     if (JSON.stringify(initData) !== JSON.stringify(cats)) {
       setIsLoading(true);
       setTimeout(() => {
@@ -25,17 +27,20 @@ function App() {
     }
   };
 
+  const saveData = (data) => {
+    setCats(data);
+    setInitData(data);
+  };
+
   useEffect(() => {
     fetch('https://github.com')
       .then((res) => res.json())
       .then(
         (result) => {
           if (result.data?.length) {
-            setCats(result.data);
-            setInitData(result.data);
+            saveData(result.data);
           } else {
-            setCats(catsData);
-            setInitData(catsData);
+            saveData(catsData);
           }
         },
         (error) => {
