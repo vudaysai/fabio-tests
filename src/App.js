@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-props-no-spreading */
+import { useState } from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
 import Card from './components/Card';
 
 const data = [
@@ -32,20 +36,48 @@ const data = [
   }];
 
 function App() {
+  const [characters, updateCharacters] = useState(data);
+
+  function handleOnDragEnd(result) {
+    if (!result.destination) return;
+
+    const items = Array.from(characters);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    updateCharacters(items);
+  }
   return (
-    <div className="my-10 mx-10 sm:mx-24 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-      {
-        data.map(
-          ({ title, thumbnail, position }) => (
-            <Card
-              key={position}
-              title={title}
-              thumbnail={thumbnail}
-            />
-          ),
-        )
-      }
-    </div>
+    <DragDropContext onDragEnd={handleOnDragEnd}>
+      <Droppable droppableId="characters">
+        {(provided) => (
+          <div
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            className="characters my-10 mx-10 sm:mx-24 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5"
+          >
+            {
+              characters.map(
+                ({ title, type, thumbnail }, index) => (
+                  <Draggable key={type} draggableId={type} index={index}>
+                    {(provided1) => (
+                      <Card
+                        innerRef={provided1.innerRef}
+                        {...provided1.draggableProps}
+                        {...provided1.dragHandleProps}
+                        title={title}
+                        thumbnail={thumbnail}
+                      />
+                    )}
+                  </Draggable>
+                ),
+              )
+            }
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 }
 

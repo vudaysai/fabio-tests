@@ -1,11 +1,14 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types';
 import { Img } from 'react-image';
 
 import Loader from './Loader';
 
-function Card({ thumbnail, title }) {
+function Card({
+  thumbnail, innerRef, title, ...rest
+}) {
   return (
-    <div className="overflow-hidden rounded-lg bg-white shadow-lg h-96 ">
+    <div ref={innerRef} {...rest} className="overflow-hidden rounded-lg bg-white shadow-lg h-96 ">
       <div className="px-4 py-2">
         <div className="font-bold text-md mb-2">{title}</div>
       </div>
@@ -22,6 +25,7 @@ function Card({ thumbnail, title }) {
 Card.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  innerRef: PropTypes.func.isRequired,
 };
 
 export default Card;
