@@ -4,13 +4,21 @@ This project was bootstrapped with:
 - [Create React App](https://github.com/facebook/create-react-app).
 - [TailwindCSS](https://tailwindcss.com/).
 
-## To run this App
+## To run this App (development mode)
 
 In the project directory, you can run:
 
 - `npm install`
 
 - `npm start`
+
+## To run this App (production mode)
+
+- `npm install`
+
+- `npm build`
+
+- serve build folder
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
